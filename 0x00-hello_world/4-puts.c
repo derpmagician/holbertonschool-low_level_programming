@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * main - puts line to stdout
- * Description: uses puts to output fixed message
- * Return: void
+ * main - 
+ * Description: uses puts to output a message
+ * Return: 0
  */
 int main(void)
 {
