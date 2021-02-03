@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
- * main - 
- * Description: uses puts to output a message
+ * main - Description
+ * Uses puts to output a message
  * Return: 0
  */
 int main(void)

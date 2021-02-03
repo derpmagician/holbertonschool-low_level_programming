@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
- * main - 
- * Description: Prints message using printf
+ * main - Description 
+ * Prints message using printf
  * Return: 0
  *
  */
