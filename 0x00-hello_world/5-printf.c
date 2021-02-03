@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * main - Outputs fixed message to stdio
- * Description: Prints predetermined message using printf
- * Return: Void
+ * main - 
+ * Description: Prints message using printf
+ * Return: 0
  *
  */
 int main(void)
