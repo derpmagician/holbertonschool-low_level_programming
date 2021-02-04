@@ -1,10 +1,9 @@
 #include <stdio.h>
 
 /**
- * main - outputs a-z
- *
- * Description: Uses a for loop and putchar to output a-z and then a new line
- * Return: returns 0
+ * main - Description
+ * Uses putchar to output a-z and then a new line
+ * Return: 0
  */
 int main(void)
 {
