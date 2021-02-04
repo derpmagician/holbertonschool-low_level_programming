@@ -5,7 +5,7 @@
 /**
  * main - Description
  *
- * Creates a random number and prints a message depending of the last number valuet
+ * Creates a random number and prints a message depending of the last digit
  * Return: returns 0
  */
 int main(void)
