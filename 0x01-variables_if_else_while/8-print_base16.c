@@ -5,7 +5,7 @@
  * main - Descritopm
  * Prints numbers in base 16
  * Return: 0
-i */
+ */
 int main(void)
 {
 	char i;
