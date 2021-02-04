@@ -3,7 +3,7 @@
 
 /**
  * main - Description
- * Prints numbers from unique combinations of 000 to 999
+ * Prints combinations of 2 digits
  * Return: 0
  */
 int main(void)
