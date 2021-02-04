@@ -1,8 +1,7 @@
 #include <stdio.h>
-
 /**
- * main - Description 
- * Prints message using printf
+ * main - Description
+ * Prints text
  * Return: 0
  */
 int main(void)
