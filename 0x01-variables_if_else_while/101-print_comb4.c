@@ -3,25 +3,30 @@
 
 /**
  * main - Description
- * Prints combinations of 2 digits
+ * Prints combinations of 3 digits
  * Return: 0
  */
 int main(void)
 {
 	int i;
 	int j;
+	int k;
 
-	for (i = '0'; i <= '8'; i++)
+	for (k = '0'; k <= '7'; k++)
 	{
-		for (j = i + 1; j <= '9'; j++)
+		for (i = k + 1; i <= '8'; i++)
 		{
-			putchar(i);
-			putchar(j);
-
-			if (j < '9' || i < '8')
+			for (j = i + 1; j <= '9'; j++)
 			{
-				putchar(',');
-				putchar(' ');
+				putchar(k);
+				putchar(i);
+				putchar(j);
+
+				if (j < '9' || i < '8' || k < '7')
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
 		}
 	}
