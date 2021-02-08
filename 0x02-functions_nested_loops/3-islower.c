@@ -1,6 +1,7 @@
 nclude "holberton.h"
 /**
- * _islower -
+ * _islower - description
+ * @c: char to check
  * test if lowercase
  * Return: 1 if lowercase, 0 if not
  */
