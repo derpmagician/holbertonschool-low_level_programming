@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * _isalpha - 
+ * _isalpha - description
  * @c: character to be checked.
  * Return: 1 if the character is an English character.
  * 0 if the character is not an English character.
@@ -11,5 +11,4 @@ int _isalpha(int c)
 		return (1);
 	else
 		return (0);
-
 }
