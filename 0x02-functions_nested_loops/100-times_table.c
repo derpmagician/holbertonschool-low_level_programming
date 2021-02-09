@@ -1,48 +1,47 @@
-#include <stdio.h>
-#include <unistd.h>
 #include "holberton.h"
 /**
- * print_times_table - prints the n times table, starting with 0.
- * @n: entry value.
- *
+ * print_times_table - prints the times table for n.
+ * @n: The multiplication table requested.
  * Return: void
  */
 void print_times_table(int n)
 {
-	int a;
-	int b;
+	int i, j, res;
 
-	if (n >= 0 && n <= 15)
+	if (!(n > 15 || n < 0))
 	{
-		for (a = 0; a <= n; a++)
+		for (i = 0; i <= n; i++)
 		{
-			for (b = 0; b <= n; b++)
+			for (j = 0; j <= n; j++)
 			{
-				if (b == 0)
+				res = (i * j);
+				if (j != 0)
 				{
-					printf("0");
+					_putchar(',');
+					_putchar(' ');
 				}
-				else if (a * b > 99)
+				if (res < 10 && j != 0)
 				{
-					printf("%d", a * b);
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((res % 10) + '0');
 				}
-				else if (a * b > 9)
+				else if (res >= 10 && res < 100)
 				{
-					printf(" %d", a * b);
+					_putchar(' ');
+					_putchar((res / 10) + '0');
+					_putchar((res % 10) + '0');
 				}
-				else if (a * b <= 9)
+				else if (res >= 100 && j != 0)
 				{
-					printf("  %d", a * b);
-				}
-				if (b != n)
-				{
-					printf(", ");
+					_putchar((res / 100) + '0');
+					_putchar((res / 10) % 10 + '0');
+					_putchar((res % 10) + '0');
 				}
 				else
-				{
-					printf("\n");
-				}
+					_putchar((res % 10) + '0');
 			}
+			_putchar('\n');
 		}
 	}
 }
