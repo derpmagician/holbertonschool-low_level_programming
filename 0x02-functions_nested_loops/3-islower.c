@@ -1,9 +1,9 @@
-nclude "holberton.h"
+#include "holberton.h"
 /**
  * _islower - description
- * @c: char to check
- * test if lowercase
- * Return: 1 if lowercase, 0 if not
+ * detects lowercases
+ * @c: character to test.
+ * Return: 1 if for lowercase, 0 if is not a lowercase letter.
  */
 int _islower(int c)
 {
