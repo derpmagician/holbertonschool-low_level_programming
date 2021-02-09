@@ -1,16 +1,14 @@
 #include "holberton.h"
-
 /**
- * print_alphabet - checks c
- * Description: Prints the alphabet with _putchar x10
- * Return: void
- */
-void print_alphabet(void)
+  * print_alphabet_x10 - print 10 times alphabet
+  * Return: empty
+  */
+void print_alphabet_x10(void)
 {
 	int i;
 	char c;
 
-	for (i = 0; i < 9)
+	for (i = 0; i < 10; ++i)
 	{
 		for (c = 'a'; c <= 'z'; c++)
 		{
