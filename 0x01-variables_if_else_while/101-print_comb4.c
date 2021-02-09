@@ -1,32 +1,32 @@
-#include <stdlib.h>
 #include <stdio.h>
 
 /**
- * main - Description
- * Prints combinations of 3 digits
+ * main - program that prints numbers 00 - 99
+ *
  * Return: 0
  */
 int main(void)
 {
 	int i;
 	int j;
-	int k;
+	int z;
 
-	for (k = '0'; k <= '7'; k++)
+	j = 0;
+	for (i = '0'; i <= '9'; i++)
 	{
-		for (i = k + 1; i <= '8'; i++)
+		j = i;
+		while (++j <= '9')
 		{
-			for (j = i + 1; j <= '9'; j++)
+			z = j;
+			while (++z <= '9')
 			{
-				putchar(k);
 				putchar(i);
 				putchar(j);
-
-				if (j < '9' || i < '8' || k < '7')
-				{
-					putchar(',');
-					putchar(' ');
-				}
+				putchar(z);
+				if (i == '7' && j == '8' && z == '9')
+					break;
+				putchar(',');
+				putchar(' ');
 			}
 		}
 	}

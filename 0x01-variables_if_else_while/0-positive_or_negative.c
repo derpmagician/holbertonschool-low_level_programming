@@ -3,9 +3,9 @@
 #include <stdio.h>
 
 /**
- *  main - Description
- * Determines if a number is positive or negative
- * Return: 0
+ * main - program that prints if it is positive, negative  or 0
+ *
+ * Return: Always 0
  */
 int main(void)
 {
@@ -14,10 +14,10 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	if (n > 0)
-		printf("%i is positive\n", n);
+		printf("%d is positive\n", n);
+	else if (n == 00)
+		printf("%d is zero\n", n);
 	else if (n < 0)
-		printf("%i is negative\n", n);
-	else
-		printf("%i is zero\n", n);
+		printf("%d is negative\n", n);
 	return (0);
 }
