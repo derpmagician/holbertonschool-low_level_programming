@@ -4,7 +4,7 @@ i#include <stdio.h>
 /**
 * print_remaining_days - how many days are left
 * @month: month number
-*i @day: day of month
+* @day: day of month
 * @year: year
 * Return: void
 */
