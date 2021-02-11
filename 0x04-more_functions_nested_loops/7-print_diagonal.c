@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
-*print_line - draw a diagonal line n times
+*print_diagonal - draw a diagonal line n times
 *@n: input
 *Return: void
 */
