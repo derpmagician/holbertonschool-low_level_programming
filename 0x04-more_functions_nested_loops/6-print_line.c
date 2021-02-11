@@ -1,14 +1,15 @@
 #include "holberton.h"
 
 /**
- * print_line - check the code for Holberton School students.
- *
- * Return: Always 0.
- */
+* print_line - prints - n times
+* @n: input
+* Return: void
+*/
 void print_line(int n)
 {
-	while(n>0)
-		_putchar()
+	int i;
 
-	_putchar('\n')
+	for (i = 0; i <= n; i++)
+		_putchar('_');
+	_putchar('\n');
 }
