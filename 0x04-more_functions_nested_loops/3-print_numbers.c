@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * print_numbers - Prints numbers since 0 to 9
+ * print_numbers - Prints numbers from 0 to 9
  *
  * Return: void
  */
