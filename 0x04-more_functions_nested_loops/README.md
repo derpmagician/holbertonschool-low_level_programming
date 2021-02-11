@@ -1,1 +1,1 @@
-Exercises for the theme: C - More functions, more nested loops
+Exercises for 0x04. C - More functions, more nested loops
