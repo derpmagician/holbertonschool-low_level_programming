@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include "holberton.h"
 /**
  * main - Fizz Buzz.
  *
- * Return: Always 0.
+ * Return: 0.
  */
 int main(void)
 {
@@ -12,24 +11,14 @@ int main(void)
 	for (i <= 1; i <= 100; i++)
 	{
 		if ((i % 3) == 0 && (i % 5) != 0)
-		{
-			pritnf("Fizz");
-		}
+			printf("Fizz");
 		else if ((i % 5) == 0 && (i % 3) != 0)
-		{
-			pritnf("Buzz");
-		}
+			printf("Buzz");
 		else if ((i % 3) == 0 && (i % 5) == 0)
-		{
-			pritnf("FizzBuzz");
-		}
+			printf("FizzBuzz");
 		else
-		{
 			printf("%d", i);
-		}
 		if (i != 100)
-		{
-			print(" ");
-		}
+			printf(" ");
 	}
 }
