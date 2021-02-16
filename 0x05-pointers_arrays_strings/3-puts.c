@@ -1,13 +1,18 @@
 #include "holberton.h"
 
 /**
- * _puts - swaps the values of two integers.
- * @a: integer to swap
- * @b: integer to swap
- * Resturn: void
+ * _puts - prints a string
+ * @str: string to print
+ * Return: void
  */
 void _puts(char *str)
 {
-	int n;
+	int i = 0;
 
+	while (str[i] != '\0')
+	{
+		_putchar(str);
+		i++;
+	}
+	_putchar('\n');
 }
