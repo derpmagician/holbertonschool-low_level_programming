@@ -1,12 +1,12 @@
 #include "holberton.h"
 
 /**
- * swap - swaps the values of two integers.
+ * swap_int - swaps the values of two integers.
  * @a: integer to swap
  * @b: integer to swap
  * Resturn: void
  */
-void  swap(int *a, int *b)
+void  swap_int(int *a, int *b)
 {
 	int n;
 
