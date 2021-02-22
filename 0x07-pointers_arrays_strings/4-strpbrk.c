@@ -1,24 +1,32 @@
 #include "holberton.h"
+
 /**
- * _strpbrk - Takes a pointer to an int
- * @s: destination string
- * @accept: source string
- *
- * Description: Appends two strings
- * Return: char
-*/
+  * _strpbrk - search a string for any of a set of bytes
+  * @s: source string
+  * @accept: accepted characters
+  * Return: the string from the first found accepted character
+  */
 char *_strpbrk(char *s, char *accept)
 {
-int i, j;
-for (i = 0; s[i]; i++)
-{
-	for (j = 0; accept[j]; j++)
+	int a = 0, b;
+
+	while (s[a])
 	{
-		if (s[i] == accept[j])
+		b = 0;
+
+		while (accept[b])
 		{
-			return (s + i);
+			if (s[a] == accept[b])
+			{
+				s += a;
+				return (s);
+			}
+
+			b++;
 		}
+
+		a++;
 	}
-}
-return (NULL);
+
+	return ('\0');
 }
