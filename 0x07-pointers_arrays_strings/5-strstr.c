@@ -1,27 +1,28 @@
 #include "holberton.h"
 /**
- * _strstr - Takes a pointer to an int
- * @haystack: destination string
- * @needle: source string
- *
- * Description: Appends two strings
- * Return: char
-*/
+  * _strstr - locate a substring
+  * @haystack: the string to search
+  * @needle: the string to find
+  *
+  * Return: char value
+  */
 char *_strstr(char *haystack, char *needle)
 {
-while (*haystack)
-{
-	char *Begin = haystack;
-	char *pattern = needle;
+	int a = 0, b = 0;
 
-	while (*haystack && *pattern && *haystack == *pattern)
+	while (haystack[a])
 	{
-		haystack++;
-		pattern++;
+		while (needle[b])
+		{
+			if (haystack[a + b] != needle[b])
+				break;
+			b++;
+		}
+
+		if (needle[b] == '\0')
+			return (haystack + a);
+		a++;
 	}
-	if (!*pattern)
-		return (Begin);
-	haystack = Begin + 1;
-}
-return (NULL);
+
+	return ('\0');
 }
