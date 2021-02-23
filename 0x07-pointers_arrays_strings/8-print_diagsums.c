@@ -6,21 +6,21 @@
   *
   * Return: void
   */
+
 void print_diagsums(int *a, int size)
 {
-	int i, j;
-	int main_diag_sum, sec_diag_sum;
+	int suma1 = 0;
+	int suma2 = 0;
+	int b = 0;
+	int c = size - 1;
 
-	main_diag_sum = 0;
-	sec_diag_sum = 0;
+	while (b < size * size)
+	{
+		suma1 += a[b];
+		suma2 += a[c];
 
-	for (i = 0; i < size; i++)
-		for (j = 0; j < size; j++)
-			if (i == j)
-			{
-				main_diag_sum += a[(i * size) + j];
-				sec_diag_sum += a[(i * size) + (size - 1 - j)];
-			}
-
-	printf("%d, %d\n", main_diag_sum, sec_diag_sum);
+		b += size + 1;
+		c += size - 1;
+	}
+	printf("%d, %d\n", suma1, suma2);
 }
