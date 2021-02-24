@@ -1,26 +1,17 @@
 #include "holberton.h"
 /**
-  * print_diagsums - Print the sum of two diagonals of square matrix
-  * @a: the matrix
-  * @size: the size
-  *
-  * Return: void
-  */
-
+ * print_diagsums - prints
+ * @a: value
+ * @size: size
+ * Return: entry
+ */
 void print_diagsums(int *a, int size)
 {
-	int suma1 = 0;
-	int suma2 = 0;
-	int b = 0;
-	int c = size - 1;
-
-	while (b < size * size)
+	int b, sum1 = 0, sum2 = 0;
+	for (b = 0; b < size; b++)
 	{
-		suma1 += a[b];
-		suma2 += a[c];
-
-		b += size + 1;
-		c += size - 1;
+		sum1 += a[(size + 1) * b];
+		sum2 += a[(size - 1) * (b + 1)];
 	}
-	printf("%d, %d\n", suma1, suma2);
+	printf("%d, %d\n", sum1, sum2);
 }
