@@ -9,44 +9,44 @@
   *
   * Return: Pointer to a new address
   */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+ichar *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i = 0, j = 0, k = 0, l = 0;
-	char *str;
+    unsigned int ls1 = 0, ls2 = 0, x = 0, l = 0;
+    char *str;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+    if (s1 == NULL)
+        s1 = "";
+    if (s2 == NULL)
+        s2 = "";
 
-	while (s1[i])
-		i++;
+    while (s1[ls1])
+        ls1++;
 
-	while (s2[k])
-		k++;
+    while (s2[ls2])
+        ls2++;
 
-	if (n >= k)
-		l = i + k;
-	else
-		l = i + n;
+    if (n >= ls2)
+        l = ls1 + ls2;
+    else
+        l = ls1 + n;
 
-	str = malloc(sizeof(char) * l + 1);
-	if (str == NULL)
-		return (NULL);
+    str = malloc(sizeof(char) * l + 1);
+    if (str == NULL)
+        return (NULL);
 
-	k = 0;
-	while (j < l)
-	{
-		if (j <= i)
-			str[j] = s1[j];
+    ls2 = 0;
+    while (x < l)
+    {
+        if (x <= ls1)
+            str[x] = s1[x];
 
-		if (j >= i)
-		{
-			str[j] = s2[k];
-			k++;
-		}
-		j++;
-	}
-	str[j] = '\0';
-	return (str);
+        if (x >= ls1)
+        {
+            str[x] = s2[ls2];
+            ls2++;
+        }
+        x++;
+    }
+    str[x] = '\0';
+    return (str);
 }
