@@ -8,7 +8,7 @@
  *
  * Return: Index of the element if cmp(array[ind]) == 0, -1 otherwise
  */
-iint int_index(int *array, int size, int (*cmp)(int))
+int int_index(int *array, int size, int (*cmp)(int))
 {
 	int i = 0;
 
