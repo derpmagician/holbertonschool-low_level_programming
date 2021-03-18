@@ -36,12 +36,11 @@ list_t *add_node(list_t **head, const char *str)
 */
 int _strlen(const char *s)
 {
-	int i;
-	i = 0;
+	int i = 0;
 
 	while (s[i] != 0)
 	{
 	i++;
 	}
-return (i);
+	return (i);
 }
