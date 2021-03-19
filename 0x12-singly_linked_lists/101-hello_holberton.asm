@@ -1,11 +1,17 @@
-	global	main
-	extern	printf
+section .text
+global main
 
-	section	.text
 main:
-	mov	rdi, format
-	mov	rax, 0
-	call	printf
-	ret
-format:
-	db "Hello, Holberton", 10, 0
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, msg
+	mov rdx, msglen
+	syscall
+
+	mov rax, 60
+	mov rdi, 0
+	syscall
+
+section .rodata
+	msg: db "Hello, Holberton", 10
+	msglen: equ $ - msg
