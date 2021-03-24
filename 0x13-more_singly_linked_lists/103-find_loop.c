@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 
 listint_t *intsec_slow_fast(listint_t *slow, listint_t *fast);
