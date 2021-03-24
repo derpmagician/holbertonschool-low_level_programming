@@ -1,37 +1,60 @@
 #include "lists.h"
-#include <stdio.h>
+
+listint_t *intsec_slow_fast(listint_t *slow, listint_t *fast);
 
 /**
- * find_listint_loop - print a linked list only one time
- * @head: head of LL
- * Return: address of the node where the loop starts
+ * find_listint_loop - Finds the node were a loop starts
+ * @head: Pointer to head node
+ *
+ * Return: Pointer to the intersection node
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	const listint_t *slow, *fast, *marker;
-	unsigned int counter = 0, flag = 0;
+	listint_t *slow, *fast;
 
 	if (head == NULL)
-		return (0);
-	marker = slow = head;
-	fast = head->next;
-	while (head != NULL)
+		return (NULL);
+
+	slow = fast = head;
+
+	slow = intsec_slow_fast(slow, fast);
+
+	if (slow == NULL)
+		return (NULL);
+
+	while (head != slow)
 	{
 		head = head->next;
-		counter++;
-
-		if (flag == 0 && fast != NULL && fast->next != NULL && slow != NULL)
-		{
-			if (fast == slow)
-			{
-				flag = 1;
-				slow = marker;
-			}
-			fast = fast->next->next;
-		}
-		if (flag == 1 && slow == head)
-			return (head);
 		slow = slow->next;
 	}
+
+
+	return (head);
+}
+
+/**
+ * intsec_slow_fast - Finds the interseccion node of a cyclic linked list
+ * @slow: Slow pointer jumps by 1
+ * @fast: Fast pointer jumps by 2
+ *
+ * Return: Pointer to the intersection node or NULL if it doen't exists
+ */
+listint_t *intsec_slow_fast(listint_t *slow, listint_t *fast)
+{
+	while (slow != NULL)
+	{
+		slow = slow->next;
+		if (fast && fast->next)
+		{
+			fast = fast->next->next;
+			if (slow == fast)
+			{
+				return (slow);
+			}
+		}
+		else
+			return (NULL);
+	}
+
 	return (NULL);
 }
