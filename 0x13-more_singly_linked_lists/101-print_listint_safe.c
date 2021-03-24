@@ -1,47 +1,41 @@
-#include <stdio.h>
-#include <stlib.h>
 #include "lists.h"
+#include <stdio.h>
 
 /**
- * print_listint_safe - Prints a linked list
- * @head: Pointer to head node
- *
- * Return: Number of nodes in the list
+ * print_listint_safe - print a linked list only one time
+ * @head: head of LL
+ * Return: counter of nodes & prints an error if the linked list is a circle
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int count = 0, compare_slow_curr = 0;
-	const listint_t *slow, *fast, *curr;
+	const listint_t *slow, *fast, *marker;
+	unsigned int counter = 0, flag = 0;
 
 	if (head == NULL)
 		return (0);
-
-	curr = head;
-	slow = fast = head;
-
-	while (curr != NULL)
+	marker = slow = head;
+	fast = head->next;
+	while (head != NULL)
 	{
-		printf("[%p] %d\n", (void *)curr, curr->n);
-		curr = curr->next;
-		count++;
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
+		counter++;
 
-		slow = slow->next;
-		if (compare_slow_curr == 0 && fast != NULL && fast->next != NULL)
+		if (flag == 0 && fast != NULL && fast->next != NULL && slow != NULL)
 		{
-			fast = fast->next->next;
-			if (slow == fast)
+			if (fast == slow)
 			{
-				compare_slow_curr = 1;
-				slow = head;
+				flag = 1;
+				slow = marker;
 			}
+			fast = fast->next->next;
 		}
-
-		if (compare_slow_curr && slow == curr)
+		if (flag == 1 && slow == head)
 		{
-			printf("-> [%p] %d\n", (void *)curr, curr->n);
-			break;/*exit(98);*/
+			printf("-> [%p] %d\n", (void *)head, head->n);
+			break;
 		}
+		slow = slow->next;
 	}
-
-	return (count);
+	return (counter);
 }
