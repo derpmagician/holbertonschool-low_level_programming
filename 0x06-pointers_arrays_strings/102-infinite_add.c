@@ -1,80 +1,118 @@
-/**
- * arrayLen - length of array
- * @arr: array
- * Return: length
- */
-int arrayLen(char *arr)
-{
-    int i = 0;
-    while (arr[i])
-	i++;
-    return i;
-}
+#include "holberton.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+int min(int, int);
+int get_length(char *);
+int add_missing_digits(char *, char *, int, int, int *);
 
 /**
- * infinite_add - sum
- * @n1: number 1
- * @n2: number 2
- * @r: buffer to store result
- * @size_r: size of buffer
+ * infinite_add - Adds to numbers given as strings
+ * @n1: First number to add
+ * @n2: Second number to add
+ * @r: buffer to store the sum
+ * @size_r: size of the biffer
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: Pointer to r
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int sum;
-	int len1 = arrayLen(n1);
-	int len2 = arrayLen(n2);
-	int maxlen = (len1 > len2) ? len1 : len2;
-	int minlen = (len1 > len2) ? len2 : len1;
-	int lleva = 0;
 	int i;
-	char tmp;
+	int n1_len, n2_len, min_len;
+	int i_n1, i_n2;
+	int i_sum;
+	int partial_sum;
+	char *rev_sum;
 
-	if ( maxlen <= size_r)
-	{
-		for(i = 0; r[maxlen + i]; i++)
-			r[maxlen + i] = '\0';
-	}
-	else
-		return(0);
-	for (i = 1; i < minlen; i++) 
-	{
-		sum = (n1[len1 - i] - 48) + (n2[len2 - i] - 48) + lleva;
-		lleva = sum / 10; //decenas
-		sum = sum % 10; //unidades
-		r[maxlen - i] = sum + '0';
-	}
-	
-	if (maxlen == len1)
-	{
-		while (i < maxlen)
-		{
-			sum = (n1[len1 - i] - 48) + lleva;
-			lleva = sum / 10; //decenas
-			sum = sum % 10; //unidades
-                	r[size_r - i] = sum + '0';
-	
-		}
-	}
-	else if (maxlen == len2)
-		while (i < maxlen)
-		{
-			sum = (n2[len2 - i] - 48) + lleva;
-			lleva = sum / 10; //decenas
-			sum = sum % 10; //unidades
-			r[size_r - i] = sum + '0';
-		}
-	if (lleva > 0 && maxlen == size_r)
+	n1_len = get_length(n1);
+	n2_len = get_length(n2);
+
+	if (n1_len >= size_r || n2_len >= size_r)
 		return (0);
-	else if (lleva > 0 && maxlen < size_r)
-		for (i = 0; r[i]; i++)
-		{
-			tmp = r[maxlen + i];
-			r[maxlen + i] = r[maxlen + i - 1];
-			r[maxlen + i + 1] = tmp;
-		}
+
+	min_len = min(n1_len, n2_len);
+	i_n1 = n1_len - 1;
+	i_n2 = n2_len - 1;
+
+	i_sum = 0;
+	partial_sum = 0;
+	rev_sum = malloc(size_r * sizeof(char));
+
+	for (i = 0; i < min_len; i++)
+	{
+		partial_sum += n1[i_n1--] - '0';
+		partial_sum += n2[i_n2--] - '0';
+		rev_sum[i_sum++] = '0' + (partial_sum % 10);
+		partial_sum /= 10;
+	}
+
+	i_sum = add_missing_digits(rev_sum, n1, i_sum, i_n1, &partial_sum);
+	i_sum = add_missing_digits(rev_sum, n2, i_sum, i_n2, &partial_sum);
+
+	if (partial_sum > 0)
+		rev_sum[i_sum++] = '1';
+
+	if (i_sum >= size_r)
+		return (0);
+
+	for (i = 0; i < size_r && i_sum >= 1; i++)
+		r[i] = rev_sum[--i_sum];
+
+	r[i] = '\0';
+
 	return (r);
-	
+}
+
+/**
+ * min - Compares to numbers and returns the minimum
+ * @n1: First num
+ * @n2: Second num
+ *
+ * Return: Minimum between n1 and n2
+ */
+int min(int n1, int n2)
+{
+	if (n1 < n2)
+		return (n1);
+
+	return (n2);
+}
+
+
+/**
+ * get_length - Calculates and returns the length of a string
+ * @num: Number in string format
+ *
+ * Return: Length of num
+ */
+int get_length(char *num)
+{
+	int len = 0;
+
+	while (*(num + len) != '\0')
+		len++;
+
+	return (len);
+}
+
+/**
+ * add_missing_digits - Adds the remaining digits from num to rev_sum
+ * @rev_sum: Sum of digits in reverse in string format
+ * @n: Num to get the digits from
+ * @i_sum: Index of rev_sum to put the  digit
+ * @i: Index of "n" to be evaluated
+ * @part_sum: Pointer to partial sum to calculate de digit to be appended
+ *
+ * Return: Next index of rev_sum to put the next digit
+ */
+int add_missing_digits(char *rev_sum, char *n, int i_sum, int i, int *part_sum)
+{
+	while (i >= 0)
+	{
+		*(part_sum) = *(part_sum) + n[i--] - '0';
+		rev_sum[i_sum++] = '0' + (*(part_sum) % 10);
+		*(part_sum) = *(part_sum) / 10;
+	}
+
+	return (i_sum);
 }
