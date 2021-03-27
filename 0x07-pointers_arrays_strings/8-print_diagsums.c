@@ -1,17 +1,26 @@
 #include "holberton.h"
+#include <stdio.h>
+
 /**
- * print_diagsums - prints
- * @a: value
- * @size: size
- * Return: entry
+ * print_diagsums - Prints sum of both diagonals individually
+ * @a: Pointer to the first element of matrix
+ * @size: Size of matrix sizeXsize
  */
 void print_diagsums(int *a, int size)
 {
-	int b, sum1 = 0, sum2 = 0;
-	for (b = 0; b < size; b++)
-	{
-		sum1 += a[(size + 1) * b];
-		sum2 += a[(size - 1) * (b + 1)];
-	}
-	printf("%d, %d\n", sum1, sum2);
+	int i, j;
+	int main_diag_sum, sec_diag_sum;
+
+	main_diag_sum = 0;
+	sec_diag_sum = 0;
+
+	for (i = 0; i < size; i++)
+		for (j = 0; j < size; j++)
+			if (i == j)
+			{
+				main_diag_sum += a[(i * size) + j];
+				sec_diag_sum += a[(i * size) + (size - 1 - j)];
+			}
+
+	printf("%d, %d\n", main_diag_sum, sec_diag_sum);
 }
