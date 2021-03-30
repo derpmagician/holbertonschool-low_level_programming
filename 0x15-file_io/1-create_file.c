@@ -47,3 +47,23 @@ int create_file(const char *filename, char *text_content)
 	free(mem);
 	return (1);
 }
+
+/**
+ * _strlen - len
+ *
+ * @s: is a pointer to a char
+ *
+ * Return: Always 0.
+ */
+
+int _strlen(const char *s)
+{
+	int i = 0;
+
+	while (*(s + i) != '\0')
+	{
+		i++;
+	}
+
+	return (i);
+}
