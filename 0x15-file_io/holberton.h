@@ -1,5 +1,14 @@
 #ifndef IO_
 #define IO_
+
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+
 int _putchar(char c);
 int _strlen(const char *s);
 ssize_t read_textfile(const char *filename, size_t letters);

@@ -1,6 +1,3 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
 #include "holberton.h"
 
 /**
@@ -11,43 +8,23 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
-	char *buff;
-	ssize_t bytes, r;
+	int fd, readed;
+	char *buff = malloc(sizeof(char *) * letters);
+
+	if (!buff)
+		return (0);
 
 	if (!filename)
 		return (0);
-	fd = open(filename, O_RDONLY);
+
+	fd = open(filename, O_RDONLY, 0600);
 	if (fd == -1)
-	{
-		close(fd);
 		return (0);
-	}
 
-	buff = malloc(sizeof(char) * letters);
-	if (!buff)
-	{
-		close(fd);
-		return (0);
-	}
+	readed = read(fd, buff, letters);
+	write(STDOUT_FILENO, buff, readed);
 
-	bytes = read(fd, buff, letters);
-
-	if (bytes == -1)
-	{
-		close(fd);
-		free(buff);
-		return (0);
-	}
-
-	r = write(STDOUT_FILENO, buff, bytes);
-
-	if (r == -1)
-	{
-		close(fd);
-		free(buff);
-		return (0);
-	}
+	free(buff);
 	close(fd);
-	return (bytes);
+	return (readed);
 }
