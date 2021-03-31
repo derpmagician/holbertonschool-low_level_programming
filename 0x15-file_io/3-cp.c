@@ -1,69 +1,95 @@
 #include <stdio.h>
 #include "holberton.h"
 
-/**
-  * main - Entry point
-  * @argc: The argument count
-  * @argv: The argument vector
-  *
-  * Return: ...
-  */
-int main(int argc, char **argv)
-{
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+void exit_97(void);
+void exit_98(char*);
+void exit_99(char*);
+void exit_100(int);
 
-	copy_file(argv[1], argv[2]);
-	exit(0);
+
+/**
+  * main - copies the contents of one file to another
+  * @ac: integer number of arguments
+  * @av: pointer to string arguments
+  * Return: 0 on success, or one of 97, 98, 99, 100 on failure
+  */
+int main(int ac, char **av)
+{
+	char buf[1024];
+	int fd_dest = 0, fd_src = 0;
+	ssize_t w = 0, r = 0;
+
+	if (ac != 3)
+		exit_97();
+
+	fd_src = open(av[1], O_RDONLY);
+	if (fd_src == -1)
+		exit_98(av[1]);
+
+	fd_dest = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (fd_dest == -1)
+		exit_99(av[2]);
+
+	r = read(fd_src, buf, 1024);
+	do {
+		if (r == -1)
+			break;
+		w = write(fd_dest, buf, r);
+		if (w == -1)
+			exit_99(av[2]);
+		r = read(fd_src, buf, 1024);
+	} while (r > 0);
+
+	if (r == -1)
+		exit_98(av[1]);
+
+	w = close(fd_dest);
+	if (w == -1)
+		exit_100(fd_dest);
+
+	r = close(fd_src);
+	if (r == -1)
+		exit_100(fd_src);
+
+	return (0);
+}
+
+
+/**
+  * exit_97 - exit status 97
+  */
+void exit_97(void)
+{
+	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+	exit(97);
 }
 
 /**
-  * copy_file - ...
-  * @src: ...
-  * @dest: ...
-  *
-  * Return: ...
+  * exit_98 - exit status 98
+  * @str: name of file
   */
-void copy_file(const char *src, const char *dest)
+void exit_98(char *str)
 {
-	int ofd, tfd, readed;
-	char buff[1024];
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", str);
+	exit(98);
+}
 
-	ofd = open(src, O_RDONLY);
-	if (!src || ofd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
-		exit(98);
-	}
+/**
+  * exit_99 - exit status 99
+  * @str: name of file
+  */
+void exit_99(char *str)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str);
+	exit(99);
+}
 
-	tfd = open(dest, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((readed = read(ofd, buff, 1024)) > 0)
-	{
-		if (write(tfd, buff, readed) != readed || tfd == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest);
-			exit(99);
-		}
-	}
-
-	if (readed == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
-		exit(98);
-	}
-
-	if (close(ofd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", ofd);
-		exit(100);
-	}
-
-	if (close(tfd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", tfd);
-		exit(100);
-	}
+/**
+  * exit_100 - exit status 100
+  * @fd: name of file
+  */
+void exit_100(int fd)
+{
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	exit(100);
 }
