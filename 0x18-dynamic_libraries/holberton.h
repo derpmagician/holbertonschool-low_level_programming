@@ -1,5 +1,8 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
+#ifndef _DINAMIC_
+#define _DINAMIC_
+
+#include <unistd.h>
+#include <stdlib.h>
 
 int _putchar(char);
 
