@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 """
-Returns the perimeter of the island described in grid
+Function to determine a perimeter in a grid
 """
 
 
 def island_perimeter(grid):
+    """
+    Search land cell and counts the water cells around it
+    """
     LAND = 1
     WATER = 0
     perimeter = 0
