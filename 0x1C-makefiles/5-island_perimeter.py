@@ -23,5 +23,5 @@ def island_perimeter(grid):
                     perimeter += 1
                 # down
                 if x == len(row) - 1 or grid[y][x + 1] == WATER:
-                    perimeter += 1 
+                    perimeter += 1
     return perimeter
