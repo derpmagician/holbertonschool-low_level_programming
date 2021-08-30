@@ -35,8 +35,6 @@ int binary_search(int *array, size_t size, int value)
 	if (array == NULL || size == 0)
 		return (-1);
 
-	
-
 	while (start <= end)
 	{
 		search_here(array, start, end);
@@ -48,4 +46,5 @@ int binary_search(int *array, size_t size, int value)
 		else
 			return (center);
 	}
+	return (-1);
 }
