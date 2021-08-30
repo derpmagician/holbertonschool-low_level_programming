@@ -3,7 +3,7 @@
 /**
  * search_here - print the sub array to search
  * @array: array to print
- * @start starting printing position
+ * @start: starting printing position
  * @end: end of the printing position
  */
 void search_here(int *array, size_t start, size_t end)
