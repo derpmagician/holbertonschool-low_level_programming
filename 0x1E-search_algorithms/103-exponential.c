@@ -48,9 +48,18 @@ int bin_search(int *array, size_t size, int value)
 	}
 	return (-1);
 }
+
+**
+ * exponential_search - Searches a value in a sorted array of integers
+ * @array: pointer to the first element of the array to search
+ * @size: number of elements in array
+ * @value: Value to search
+ *
+ * Return: Index at which the value was found, -1 otherwise
+ */
 int exponential_search(int *array, size_t size, int value)
 {
-	long unsigned indx = 1, start, binary_indx; 
+	int indx = 1, start, binary_indx;
 	size_t n_size;
 
 	if (array == NULL || size == 0)
