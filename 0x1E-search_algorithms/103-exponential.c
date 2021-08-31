@@ -64,7 +64,7 @@ int exponential_search(int *array, size_t size, int value)
 
 	if (array == NULL || size == 0)
 		return (-1);
-	else if (array[0] == value)
+	if (array[0] == value)
 		return (0);
 
 	while (indx < size && array[indx] < value)
@@ -83,5 +83,8 @@ int exponential_search(int *array, size_t size, int value)
 
 	binary_indx = bin_search(&array[start], n_size, value);
 
-	return (start + binary_indx);
+	if (binary_indx  >= 0)
+		return (start + binary_indx);
+
+	return (binary_indx);
 }
