@@ -6,10 +6,11 @@
  * @array: pointer to the first element of the array to search in
  * @size: number element in array
  * @value: is value for search
+ * @start: start for print
  * Return: return the first index where value is located or -1 if is none
  * if array is NULL return -1
  */
-int lin_search(int *array, size_t size, int value)
+int lin_search(int *array, size_t size, int value, size_t start)
 {
 	size_t i;
 
@@ -18,8 +19,8 @@ int lin_search(int *array, size_t size, int value)
 
 	for (i = 0; i < size; i++)
 	{
-		printf("Value checked array[%lu] = [%i]\n", i, array[i]);
-
+		printf("Value checked array[%lu] = [%i]\n", start, array[i]);
+		start++;
 		if (array[i] == value)
 			return (i);
 	}
@@ -62,7 +63,7 @@ int jump_search(int *array, size_t size, int value)
 
 	n_size = indx - start + 1;
 
-	linear_indx = lin_search(&array[start], n_size, value);
+	linear_indx = lin_search(&array[start], n_size, value, start);
 
 	if (linear_indx  >= 0)
 		return (start + linear_indx);
