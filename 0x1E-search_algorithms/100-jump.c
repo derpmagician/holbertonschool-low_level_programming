@@ -39,8 +39,8 @@ int lin_search(int *array, size_t size, int value)
 int jump_search(int *array, size_t size, int value)
 {
 	int linear_indx;
-	size_t indx = 0;
-	size_t jmp = (size_t) sqrt(size), start, n_size;
+	size_t indx = 0, start, n_size;
+	size_t jmp = (size_t) sqrt(size);
 
 	if (array == NULL || size == 0)
 		return (-1);
@@ -65,5 +65,5 @@ int jump_search(int *array, size_t size, int value)
 	if (linear_indx  >= 0)
 		return (start + linear_indx);
 
-	return (-1);
+	return (linear_indx);
 }
